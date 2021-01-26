@@ -1,0 +1,64 @@
+.headline{
+    position:relative;
+    top: 0%;
+    padding:20px 0px 5px 0px;
+    border-radius: 5px;
+    background-color: rgb(197, 241, 113);
+    box-shadow: 1px 1px 5px 1px rgb(94, 122, 96);
+    text-align: center;
+    font-size: xx-large;
+    font-family: monospace "宋体";
+}
+
+.searchbox{
+    margin-top:15px ;
+    text-align: center;
+    border-color: aliceblue;
+}
+
+.btn{
+    border-radius:5%;
+    color: rgb(53, 53, 53);
+    border-color: transparent;
+    box-shadow: 1px 1px 2px 1px rgb(129, 127, 127);
+}
+
+.content {
+    z-index: 1;
+    text-align: center;
+    margin: auto;
+    display: flexbox;
+}
+.content:after {
+    content: '';
+    position:fixed;
+    top: 5%;
+    left: 10%;
+    right: 10%;
+    bottom: 1px;
+    background-color: rgba(255, 255, 255, 0.89);
+    z-index: -1;
+    filter: blur(1px); 
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -ms-filter: blur(1px);
+    -o-filter: blur(1px);
+    border-radius: 1px;
+    opacity:0.8;
+}
+
+.shadow{
+    border-color: transparent;
+    box-shadow: 1px 1px 1px 1px rgb(179, 179, 179)
+}
+
+.course{
+    display: flex;
+    text-align:start;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    background-color: rgba(185, 218, 177, 0.89);
+}
