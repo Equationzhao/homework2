@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="./O.png" type=" image/png" />
+    <title>iBeike-课程搜索-课件下载</title>
+    <link rel="stylesheet" href="./课程搜索.css">
+    <link rel="stylesheet" href="./forkme.css">
+    <!-- <link rel="stylesheet" href="./pagination.css"> -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="./pagination.js"></script> -->
+    <script src="./forkme.js"></script>
+
+    
+    
+    <script>
+        $(document).ready(function(){
+          $("body").forkme("iBeike首页","http://ibeike.ustb.edu.cn/");
+        });
+     
+    </script>
+
+</head>
+
+<body style="background:rgba(238, 238, 238, 0.438)">
+               
+<div class="headline" id="top">
+    iBeike-课程搜索
+</div>
+
+<div class="searchbox">
+    <form>
+    <input placeholder="输入课程或授课教师" type="search" required id="course_name" class="shadow"/>
+    <button type="submit" class="shadow" style="background-color:aquamarine;border-width: 1px;" id="btn1">课程搜索</button>
+    </form>
+    <br/><br/><br/>
+</div>
+
+<script>
+  $(function () {
+  $("#btn1").click(function () {
+    var q=$("#course_name").val();
+
+    $.ajax({
+          url:"http://api.hunsh.net/s1/?page=1&q=",
+          dataType : 'json', 
+          type:"GET",
+          data:{
+            q,
+            
+          },
+    //       success:function(result){
+    //       console.log(result);
+       
+    //       var j = result.data.length;
+          
+    //       var flag = 1;
+    //       for(var i = 0; i < j; i++)
+    //       {
+    //         var a=new String(result.data[i].name);
+            
+    //         {
+    //           var message = $("<p class=\"course\">"+ a + "<p/>"+"<br/>");
+    //           $("#cont").append(message);
+    //           $("#course_name").val("");
+    //           flag=0;
+    //         }
+    //         delete a;
+    //       }
+           success:function(result){
+          console.log(result);
+          var j = result.data.length;
+          if(!j){
+            document.getElementById("cont").innerHTML="没有查询到相关课程~~";
+          }
+          else{
+            for(var i = 0; i < j; i++)
+            {
+              var message = $("<p class=\"course shadow\">"+ result.data[i].name + "<br>" + result.data[i].teacher + "</p>");
+              $("#cont").append(message);
+            }
+            $("#course_name").val("");
+          }
+          result.info.pages
+          
+
+          }
+    
+  });
+  });
+});
+</script>
+
+<div class="content " id="cont"></div>
+
+</body>
+</html>
